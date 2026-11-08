@@ -1,0 +1,648 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:researchos:tect:0.1.0:scenario",
+  "title": "TECT 0.1 well-formed scenario",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "policy": {
+      "type": "object",
+      "properties": {
+        "actors": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "enum": [
+                "author",
+                "validator",
+                "adversary",
+                "reproducer",
+                "reviewer"
+              ]
+            }
+          }
+        },
+        "minimum_density": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "minimum_groups": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "epsilon": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "required_attacks": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "source_poisoning",
+              "contradiction_injection",
+              "assumption_violation"
+            ]
+          }
+        },
+        "required_validations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          }
+        }
+      },
+      "required": [
+        "actors",
+        "minimum_density",
+        "minimum_groups",
+        "epsilon",
+        "required_attacks",
+        "required_validations"
+      ],
+      "additionalProperties": false
+    },
+    "operations": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "register"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "statement": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "provenance": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 4096
+                    }
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "assurance_scope": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "statement",
+                  "provenance",
+                  "confidence",
+                  "assurance_scope"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "evidence"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "claim": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "claim_version": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "kind": {
+                    "enum": [
+                      "validation",
+                      "reproduction",
+                      "attack"
+                    ]
+                  },
+                  "result": {
+                    "enum": [
+                      "PASS",
+                      "FAIL",
+                      "UNCERTAIN"
+                    ]
+                  },
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "method": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "run_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "group": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "weight": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "quality": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "reliability": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "independence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "expires_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "content_base64": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 90000,
+                    "contentEncoding": "base64"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "attack_class": {
+                    "enum": [
+                      "source_poisoning",
+                      "contradiction_injection",
+                      "assumption_violation"
+                    ]
+                  },
+                  "distance": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  }
+                },
+                "required": [
+                  "id",
+                  "claim",
+                  "claim_version",
+                  "kind",
+                  "result",
+                  "source",
+                  "method",
+                  "run_id",
+                  "group",
+                  "weight",
+                  "quality",
+                  "reliability",
+                  "independence",
+                  "observed_at",
+                  "expires_at",
+                  "content_base64",
+                  "sha256"
+                ],
+                "additionalProperties": false,
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "kind": {
+                          "const": "attack"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "attack_class",
+                        "distance"
+                      ]
+                    },
+                    "else": {
+                      "not": {
+                        "anyOf": [
+                          {
+                            "required": [
+                              "attack_class"
+                            ]
+                          },
+                          {
+                            "required": [
+                              "distance"
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "transition"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "claim": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "target": {
+                    "enum": [
+                      "GENERATED",
+                      "UNVERIFIED",
+                      "SUPPORTED",
+                      "ADVERSARIAL_TEST",
+                      "REPRODUCED",
+                      "VALIDATED",
+                      "STABLE",
+                      "ASSURED"
+                    ]
+                  }
+                },
+                "required": [
+                  "claim",
+                  "target"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "challenge"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "claim": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "attack_class": {
+                    "enum": [
+                      "source_poisoning",
+                      "contradiction_injection",
+                      "assumption_violation"
+                    ]
+                  }
+                },
+                "required": [
+                  "claim",
+                  "id",
+                  "reason",
+                  "attack_class"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "resolve"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "claim": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "challenge": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "evidence": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  }
+                },
+                "required": [
+                  "claim",
+                  "challenge",
+                  "evidence"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "revise"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "claim": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "statement": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "provenance": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 4096
+                    }
+                  },
+                  "confidence": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  "assurance_scope": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "claim",
+                  "statement",
+                  "provenance",
+                  "confidence",
+                  "assurance_scope"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "relation"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "source": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "target": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096
+                  },
+                  "relation": {
+                    "enum": [
+                      "supports",
+                      "derives",
+                      "depends_on",
+                      "reproduces",
+                      "qualifies",
+                      "contradicts",
+                      "invalidates"
+                    ]
+                  }
+                },
+                "required": [
+                  "source",
+                  "target",
+                  "relation"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "op": {
+                "const": "reassess"
+              },
+              "actor": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "as_of": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "as_of"
+                ],
+                "additionalProperties": false
+              },
+              "expected_version": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "op",
+              "actor",
+              "data"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "as_of",
+    "policy",
+    "operations"
+  ],
+  "additionalProperties": false
+}

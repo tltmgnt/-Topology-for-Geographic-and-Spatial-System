@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "assurance_scope": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "state": {
+      "enum": [
+        "GENERATED",
+        "UNVERIFIED",
+        "SUPPORTED",
+        "ADVERSARIAL_TEST",
+        "REPRODUCED",
+        "VALIDATED",
+        "STABLE",
+        "ASSURED",
+        "CONTESTED"
+      ]
+    },
+    "challenges": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "reassessment_reasons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "last_validation_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "id",
+    "statement",
+    "provenance",
+    "confidence",
+    "assurance_scope",
+    "version",
+    "state",
+    "challenges",
+    "reassessment_reasons",
+    "last_validation_at"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:researchos:tect:0.1.0:claim"
+}

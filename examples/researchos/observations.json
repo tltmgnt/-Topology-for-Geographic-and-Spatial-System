@@ -1,0 +1,16 @@
+[
+  {
+    "task_id": "synthetic-example-only",
+    "condition": "researchos",
+    "synthetic": true,
+    "accepted": false,
+    "ground_truth": null,
+    "seconds": 1,
+    "reviewer_hours": 0,
+    "reproduction_tested": false,
+    "reproduced": false,
+    "failure_present": false,
+    "failure_detected": false,
+    "audit_seconds": 0
+  }
+]
