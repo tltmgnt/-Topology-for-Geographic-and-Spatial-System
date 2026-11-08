@@ -1,4 +1,5 @@
 """Known-graph, geometry, input integrity and end-to-end acceptance tests."""
+import ast
 import contextlib
 import copy
 import io
@@ -141,6 +142,11 @@ class AnalysisTests(unittest.TestCase):
 class ValidationTests(unittest.TestCase):
     def setUp(self):
         self.data, self.policy = sample()
+
+    def test_all_modules_use_supported_python_syntax(self):
+        for path in (ROOT / 'spatial_topology').glob('*.py'):
+            with self.subTest(path=path.name):
+                ast.parse(path.read_text(), filename=str(path), feature_version=(3, 10))
 
     def test_invalid_coordinate_values(self):
         for coordinates in ([181, 0], [0, 91], [True, 0], [float('nan'), 0], [0, 0, 0],

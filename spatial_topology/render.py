@@ -24,7 +24,8 @@ def render_html(geojson, report):
         x, y = project(node.coordinates)
         color = '#94a3b8' if node.id in report['disabled_nodes'] else '#0f172a'
         shapes.append(f'<circle cx="{x:.3f}" cy="{y:.3f}" r="5" fill="{color}"><title>{escape(node.label)}</title></circle>')
-        shapes.append(f'<text x="{x + 8:.3f}" y="{y - 8:.3f}" font-size="12">{escape(node.label[:24] + ('…' if len(node.label) > 24 else ''))}</text>')
+        label = escape(node.label[:24] + ('…' if len(node.label) > 24 else ''))
+        shapes.append(f'<text x="{x + 8:.3f}" y="{y - 8:.3f}" font-size="12">{label}</text>')
     rows = ''.join('<tr><td>' + escape(item['requirement']['id']) + '</td><td>' + item['status']
                    + '</td><td>' + escape(', '.join(item['reasons']) or 'Within declared limits') + '</td></tr>'
                    for item in report['path_checks'])
