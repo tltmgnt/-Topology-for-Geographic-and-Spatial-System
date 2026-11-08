@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "required_nodes": [
+    "A",
+    "D",
+    "missing"
+  ],
+  "disabled_nodes": [],
+  "disabled_edges": [],
+  "required_paths": [
+    {
+      "id": "fragile-D",
+      "source": "A",
+      "target": "D",
+      "max_distance_m": 3000,
+      "require_redundancy": true
+    },
+    {
+      "id": "isolated-E",
+      "source": "E",
+      "target": "A",
+      "max_distance_m": 10000,
+      "require_redundancy": false
+    },
+    {
+      "id": "unknown-site",
+      "source": "missing",
+      "target": "A",
+      "max_distance_m": 10000,
+      "require_redundancy": false
+    }
+  ]
+}
