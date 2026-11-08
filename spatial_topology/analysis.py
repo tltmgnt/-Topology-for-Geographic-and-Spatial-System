@@ -71,6 +71,9 @@ def shortest_path(graph, source, target):
 
 
 def build_report(geojson, requirements):
+    if type(requirements) is dict and requirements.get('schema_version') == 2:
+        from .engine2 import build_report_v2
+        return build_report_v2(geojson, requirements)
     network = parse_network(geojson)
     policy = parse_requirements(requirements, network)
     graph = adjacency(network, policy)

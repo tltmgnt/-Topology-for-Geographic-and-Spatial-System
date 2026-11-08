@@ -1,4 +1,7 @@
-# Contracts and analysis semantics
+# Version 1 contracts and analysis semantics
+
+These contracts remain unchanged for schema version 1. See [Topology Engine 2.0](ENGINE2.md)
+for the opt-in v2 feature, requirements, study and interoperability contracts.
 
 ## Bounded ingestion
 
