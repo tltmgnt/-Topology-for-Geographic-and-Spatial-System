@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "required_nodes": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "disabled_nodes": [
+    "D"
+  ],
+  "disabled_edges": [
+    "BC"
+  ],
+  "required_paths": [
+    {
+      "id": "access-D",
+      "source": "A",
+      "target": "D",
+      "max_distance_m": 3000,
+      "require_redundancy": false
+    },
+    {
+      "id": "resilient-C",
+      "source": "A",
+      "target": "C",
+      "max_distance_m": 2000,
+      "require_redundancy": true
+    }
+  ]
+}

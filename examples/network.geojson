@@ -1,0 +1,168 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "A",
+      "properties": {
+        "kind": "node",
+        "label": "Synthetic A"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122,
+          37
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "B",
+      "properties": {
+        "kind": "node",
+        "label": "Synthetic B"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.99,
+          37
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "C",
+      "properties": {
+        "kind": "node",
+        "label": "Synthetic C"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122,
+          37.01
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "D",
+      "properties": {
+        "kind": "node",
+        "label": "Synthetic D"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122,
+          37.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "E",
+      "properties": {
+        "kind": "node",
+        "label": "Synthetic E"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.97,
+          37.02
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AB",
+      "properties": {
+        "kind": "edge",
+        "source": "A",
+        "target": "B"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122,
+            37
+          ],
+          [
+            -121.99,
+            37
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BC",
+      "properties": {
+        "kind": "edge",
+        "source": "B",
+        "target": "C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -121.99,
+            37
+          ],
+          [
+            -122,
+            37.01
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AC",
+      "properties": {
+        "kind": "edge",
+        "source": "A",
+        "target": "C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122,
+            37
+          ],
+          [
+            -122,
+            37.01
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CD",
+      "properties": {
+        "kind": "edge",
+        "source": "C",
+        "target": "D"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122,
+            37.01
+          ],
+          [
+            -122,
+            37.02
+          ]
+        ]
+      }
+    }
+  ]
+}
