@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "repository": "tltmgnt/ResearchOs",
+  "commit": "cc4cc4e79bfdb5dfd769387c3d5aa19e8f646077",
+  "release_file": "core_release.json",
+  "shared_modules": [
+    "__init__.py",
+    "__main__.py",
+    "core.py",
+    "io.py",
+    "experiments.py",
+    "pilot.py"
+  ],
+  "domain_adapter_shared": false
+}

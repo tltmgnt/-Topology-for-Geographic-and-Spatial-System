@@ -1,0 +1,35 @@
+name: Canonical TECT snapshot conformance
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  conformance:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: tltmgnt/ResearchOs
+          ref: cc4cc4e79bfdb5dfd769387c3d5aa19e8f646077
+          path: .canonical-core
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.12'
+      - name: Verify shared bytes against pinned authoritative release
+        env:
+          PYTHONPATH: .canonical-core
+        run: |
+          python - <<'PYTHON'
+          import json
+          from pathlib import Path
+          from tect_interop.contracts import check_snapshot
+          upstream=json.loads(Path('researchos/UPSTREAM.json').read_text())
+          assert upstream['commit']=="cc4cc4e79bfdb5dfd769387c3d5aa19e8f646077"
+          release=json.loads(Path('.canonical-core/core_release.json').read_text())
+          result=check_snapshot('researchos',release)
+          print(json.dumps(result,sort_keys=True))
+          assert result['conforms'],result
+          PYTHON

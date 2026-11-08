@@ -4,15 +4,15 @@
   "paper_version": "0.1.0",
   "paper_file": "TECT_WHITE_PAPER.md",
   "paper_sha256": "0855a9a48f1a3f6ff927f100b6ac97aabc05e1fce99b8f7f4a912bd29a6a0150",
-  "change_scope": "domain_validator_and_offline_tect_controller",
+  "change_scope": "bounded_software_and_portfolio_integration",
   "domain": "Spatial network research",
-  "adapter_candidate_path": "spatial_topology",
-  "adapter_status": "implemented_local_domain_pilot_and_controller",
+  "adapter_candidate_path": "researchos/domain.py",
+  "adapter_status": "bounded_local_domain_adapter_and_pinned_core_conformance",
   "full_researchos_implemented": false,
   "independent_empirical_evaluation_completed": false,
   "execution_authorized": false,
   "clinical_use_authorized": false,
-  "next_step": "Authenticate evaluator identities, obtain independent reproduction and domain adversarial evidence, then run matched empirical evaluation.",
+  "next_step": "Collect independent domain reproduction and matched-condition observations; complete authorized provider/key-custody validation before any deployment claim.",
   "required_future_capabilities": [
     "authenticated_provenance",
     "evidence_independence_estimation",
@@ -25,5 +25,21 @@
     "policy_bound_transition_controller",
     "change_triggered_dependency_revalidation",
     "local_replayable_assurance_records"
-  ]
+  ],
+  "canonical_tect_source": {
+    "schema_version": 1,
+    "repository": "tltmgnt/ResearchOs",
+    "commit": "cc4cc4e79bfdb5dfd769387c3d5aa19e8f646077",
+    "release_file": "core_release.json",
+    "shared_modules": [
+      "__init__.py",
+      "__main__.py",
+      "core.py",
+      "io.py",
+      "experiments.py",
+      "pilot.py"
+    ],
+    "domain_adapter_shared": false
+  },
+  "current_implementation_status_file": "../portfolio/STATUS.json"
 }
