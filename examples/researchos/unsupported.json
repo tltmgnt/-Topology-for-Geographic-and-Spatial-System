@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-11-08T00:00:00Z",
+  "policy": {
+    "actors": {
+      "author": [
+        "author"
+      ],
+      "validator": [
+        "validator"
+      ],
+      "adversary": [
+        "adversary"
+      ],
+      "reproducer": [
+        "reproducer"
+      ],
+      "reviewer": [
+        "reviewer"
+      ]
+    },
+    "minimum_density": 0.2,
+    "minimum_groups": 1,
+    "epsilon": 0.1,
+    "required_attacks": [
+      "source_poisoning",
+      "contradiction_injection",
+      "assumption_violation"
+    ],
+    "required_validations": [
+      "domain-adapter-v1"
+    ]
+  },
+  "operations": [
+    {
+      "op": "register",
+      "actor": "author",
+      "data": {
+        "id": "candidate",
+        "statement": "Unverified synthetic candidate",
+        "provenance": [
+          "fixture:unknown"
+        ],
+        "confidence": 0.99,
+        "assurance_scope": "Offline synthetic review"
+      }
+    },
+    {
+      "op": "transition",
+      "actor": "validator",
+      "data": {
+        "claim": "candidate",
+        "target": "UNVERIFIED"
+      }
+    },
+    {
+      "op": "transition",
+      "actor": "validator",
+      "data": {
+        "claim": "candidate",
+        "target": "SUPPORTED"
+      }
+    }
+  ]
+}

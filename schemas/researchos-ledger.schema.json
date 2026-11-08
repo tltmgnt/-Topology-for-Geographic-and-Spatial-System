@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:researchos:tect:0.1.0:ledger",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "sequence": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "timestamp": {
+        "type": "string",
+        "format": "date-time"
+      },
+      "operation": {},
+      "outcome": {
+        "enum": [
+          "PASS",
+          "FAIL",
+          "UNCERTAIN"
+        ]
+      },
+      "reasons": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "before": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "after": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "previous_hash": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "hash": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "required": [
+      "sequence",
+      "timestamp",
+      "operation",
+      "outcome",
+      "reasons",
+      "before",
+      "after",
+      "previous_hash",
+      "hash"
+    ],
+    "additionalProperties": false
+  }
+}

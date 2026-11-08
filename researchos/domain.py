@@ -1,0 +1,12 @@
+"""Scoped synthetic domain adapter; no external execution."""
+from spatial_topology import build_report
+DATA={'type': 'FeatureCollection', 'features': [{'type': 'Feature', 'id': 'A', 'properties': {'kind': 'node', 'label': 'Synthetic A'}, 'geometry': {'type': 'Point', 'coordinates': [-122, 37]}}, {'type': 'Feature', 'id': 'B', 'properties': {'kind': 'node', 'label': 'Synthetic B'}, 'geometry': {'type': 'Point', 'coordinates': [-121.99, 37]}}, {'type': 'Feature', 'id': 'C', 'properties': {'kind': 'node', 'label': 'Synthetic C'}, 'geometry': {'type': 'Point', 'coordinates': [-122, 37.01]}}, {'type': 'Feature', 'id': 'D', 'properties': {'kind': 'node', 'label': 'Synthetic D'}, 'geometry': {'type': 'Point', 'coordinates': [-122, 37.02]}}, {'type': 'Feature', 'id': 'E', 'properties': {'kind': 'node', 'label': 'Synthetic E'}, 'geometry': {'type': 'Point', 'coordinates': [-121.97, 37.02]}}, {'type': 'Feature', 'id': 'AB', 'properties': {'kind': 'edge', 'source': 'A', 'target': 'B'}, 'geometry': {'type': 'LineString', 'coordinates': [[-122, 37], [-121.99, 37]]}}, {'type': 'Feature', 'id': 'BC', 'properties': {'kind': 'edge', 'source': 'B', 'target': 'C'}, 'geometry': {'type': 'LineString', 'coordinates': [[-121.99, 37], [-122, 37.01]]}}, {'type': 'Feature', 'id': 'AC', 'properties': {'kind': 'edge', 'source': 'A', 'target': 'C'}, 'geometry': {'type': 'LineString', 'coordinates': [[-122, 37], [-122, 37.01]]}}, {'type': 'Feature', 'id': 'CD', 'properties': {'kind': 'edge', 'source': 'C', 'target': 'D'}, 'geometry': {'type': 'LineString', 'coordinates': [[-122, 37.01], [-122, 37.02]]}}]}
+REQUIREMENTS={'schema_version': 1, 'required_nodes': ['A', 'B', 'C', 'D'], 'disabled_nodes': [], 'disabled_edges': [], 'required_paths': [{'id': 'access-D', 'source': 'A', 'target': 'D', 'max_distance_m': 3000, 'require_redundancy': False}, {'id': 'resilient-C', 'source': 'A', 'target': 'C', 'max_distance_m': 2000, 'require_redundancy': True}]}
+
+def check():
+    report=build_report(DATA,REQUIREMENTS)
+    passed=report['status']=='REQUIREMENTS_SATISFIED' and not report['gaps']
+    return {'domain':'spatial','statement':'The bundled fictional domain fixture satisfies its explicitly supplied software obligations.',
+            'passed':passed,'configuration':{'input':DATA,'requirements':REQUIREMENTS},
+            'observed':{'status':report['status'],'summary':report['summary']},
+            'scope':'Declared offline model checks only; no clinical validity, geographic completeness, real-program correctness or action authority'}

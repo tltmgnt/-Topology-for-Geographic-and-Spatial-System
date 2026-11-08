@@ -11,7 +11,11 @@ requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
 
 [project.scripts]
+researchos = "researchos.__main__:main"
 spatial-topology = "spatial_topology.__main__:main"
 
 [tool.setuptools.packages.find]
-include = ["spatial_topology*"]
+include = ["spatial_topology*", "researchos*"]
+
+[tool.setuptools.package-data]
+researchos = ["*.json"]

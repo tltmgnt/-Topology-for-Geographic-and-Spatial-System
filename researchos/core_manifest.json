@@ -1,0 +1,12 @@
+{
+  "engine_version": "0.1.0",
+  "scope": "Shared modules only; domain adapter varies",
+  "sha256": {
+    "__init__.py": "532852937b0d9ae7a09360426373a909171eedcceda6c7b814397a4545132dc3",
+    "__main__.py": "01b079617de0074b77c6746068d51b4921ce6fbb157778d9a10135b966ddb2fb",
+    "core.py": "f00f5c34be6d0e2cc107754b46da2f94fd2a2b43a7cf08a86cae4c114dec520e",
+    "experiments.py": "78716550613dcc902190a2c10a9c56070bd6e6f4a2b4f1db9617295a9c90e519",
+    "io.py": "4ee33f9733fc3225072fe9602e95e14a98d2968bf7903fcc660c1fc914a34383",
+    "pilot.py": "d029c7aee3d6e5adf302ed7caa15ec4934ca79c0a8be86b55124e6939d2663c5"
+  }
+}
