@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "required_nodes": [
+    "A",
+    "C"
+  ],
+  "required_paths": [
+    {
+      "id": "access",
+      "source": "A",
+      "target": "C",
+      "max_cost": 3,
+      "max_distance_m": 1000000000.0,
+      "require_redundancy": true
+    }
+  ],
+  "disabled_nodes": [],
+  "disabled_edges": [],
+  "provenance": {
+    "source": "fictional demonstration network",
+    "dataset_version": "2"
+  },
+  "scenarios": [
+    {
+      "id": "double-link-outage",
+      "disabled_nodes": [],
+      "disabled_edges": [
+        "AB",
+        "AC"
+      ]
+    },
+    {
+      "id": "node-and-link-outage",
+      "disabled_nodes": [
+        "B"
+      ],
+      "disabled_edges": [
+        "AC"
+      ]
+    }
+  ]
+}

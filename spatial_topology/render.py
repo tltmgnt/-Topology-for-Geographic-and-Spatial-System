@@ -5,6 +5,9 @@ from .model import parse_network
 
 
 def render_html(geojson, report):
+    if report['schema_version'] == 2:
+        from .render2 import render_html_v2
+        return render_html_v2(geojson, report)
     network = parse_network(geojson)
     coordinates = [p for node in network.nodes.values() for p in [node.coordinates]]
     coordinates += [p for edge in network.edges.values() for p in edge.coordinates]

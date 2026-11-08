@@ -1,5 +1,16 @@
 # Geographic and Spatial Topology
 
+## Topology Engine 2.0 upgrade
+
+The project now includes opt-in directed and weighted routing, polygon relationships,
+multiple simultaneous outage scenarios, scoped resilience scores, optional PostGIS
+snapshots, dependency-free GeoPackage interchange, interactive offline geographic
+reviews, and independent route checks. The existing v1 workflow remains available.
+See [the v2 guide and exact contracts](docs/ENGINE2.md) for installation, examples,
+semantics, limitations and benchmarks. Select v2 with requirements `schema_version: 2`.
+
+The workflow documented below describes the preserved **v1** mode.
+
 A dependency-free Python tool for **offline regional network gap analysis**.
 Import an explicitly connected GeoJSON network, declare required locations and
 routes, evaluate connectivity and single-edge failure exposure, and create a
@@ -163,9 +174,9 @@ Reports include input geometry and labels. Keep sensitive real-world network dat
 private. The supplied examples are fictional. No action is executed and
 `execution_authorized` is always false.
 
-Future, separately scoped extensions include polygon topology, directed networks,
-calibrated travel costs, authenticated data provenance, live GIS adapters and a
-TruthAi evidence-contract adapter. None is required for the offline workflow above.
+The v2 mode adds directed networks, caller-supplied costs, polygon predicates and
+snapshot adapters. Calibrated travel models, authenticated provenance and a
+TruthAi evidence-contract adapter remain future work. None is required for v1.
 
 ## License
 

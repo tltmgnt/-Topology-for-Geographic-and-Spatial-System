@@ -1,0 +1,157 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "A",
+      "properties": {
+        "kind": "node"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "B",
+      "properties": {
+        "kind": "node"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1,
+          0
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "C",
+      "properties": {
+        "kind": "node"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "D",
+      "properties": {
+        "kind": "node"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AB",
+      "properties": {
+        "kind": "edge",
+        "source": "A",
+        "target": "B",
+        "directed": true,
+        "cost": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "BC",
+      "properties": {
+        "kind": "edge",
+        "source": "B",
+        "target": "C",
+        "directed": true,
+        "cost": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "AC",
+      "properties": {
+        "kind": "edge",
+        "source": "A",
+        "target": "C",
+        "directed": true,
+        "cost": 9
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "CD",
+      "properties": {
+        "kind": "edge",
+        "source": "C",
+        "target": "D",
+        "directed": true,
+        "cost": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1,
+            1
+          ],
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    }
+  ]
+}
