@@ -1,6 +1,6 @@
 # Topology compatibility and curriculum v2 — -Topology-for-Geographic-and-Spatial-System
 
-Version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This is documentation and a learning/decision framework; it introduces no mathematical engine, runtime dependency or operational permission.
+The verified edition of version 2 adapts the explicit-molecular-graph teaching pattern to this repository's actual role. This edition adds executable learning checks and reviewed answer keys. It does not introduce a new topology engine or grant operational permission.
 
 ## Repository decision
 
@@ -40,39 +40,54 @@ Prerequisites: basic programming, sets, functions and graph vocabulary. Work in 
 | 5. Comparison | Justify mathematical necessity and cost. | Complete the six-criterion card for the existing approach and one proposed alternative; record unknowns honestly. | Evidence-backed recommendation with baseline and explicit veto conditions. |
 | 6. Reproduction | Communicate the bounded result. | Reproduce the capstone using existing offline fixtures and record software version, inputs, outputs and limitations. | Reviewable notebook or report distinguishing computation, replay, independent evaluation and authorization. |
 
-## Source-linked reading laboratory
+## Worked reasoning and source explanation
 
-The table is a guided selection of source lines, not an assertion that the whole repository is covered. Line numbers refer to the inspected source blob `88052fc88da84bc52782a479df3621455418f18b` in [spatial_topology/analysis.py](../../spatial_topology/analysis.py). Recheck anchors after source changes.
+The synthetic a—b—c route costs 2+3=5 supplied metres. Removing bc yields components {a,b}, {c}, {d}; removing b yields {a}, {c}, {d}. shortest_path() returns None for the isolated d rather than a zero distance. The lesson calls the legacy adjacency functions directly and makes no claim to validate Engine 2.0 polygon, directed-routing or geospatial import contracts.
 
-| Line | Statement | Learning check |
+Read the [inspected source](https://github.com/tltmgnt/-Topology-for-Geographic-and-Spatial-System/blob/113013012f1de5ef8d2f88196bc95e7edd5a2662/spatial_topology/analysis.py) alongside the [executable answer key](../../curriculum/lab.py). The source link is pinned to the inspected revision; the lab and any explicitly described fix are in this change.
+
+## Run the worked laboratory
+
+From the repository root, with Python 3.12 (the recorded local version is 3.12.14):
+
+```sh
+python curriculum/lab.py --verify
+```
+
+The lab checks **6 explicit expectations** against existing repository functions. It prints a JSON case report and exits nonzero on a wrong result. `--verify` additionally compares the entire case report with [expected.json](../../curriculum/expected.json). Read the input and predict each result before opening the answer key. No API account, credentials, model download, trading action or equipment connection is needed.
+
+| Checkpoint | Expected answer |
+| --- | --- |
+| isolated vertex remains visible | `[["a", "b", "c"], ["d"]]` |
+| weighted route a-to-c | `{"distance_m": 5.0, "edges": ["ab", "bc"], "nodes": ["a", "b", "c"]}` |
+| edge bc is a separating bridge | `[["a", "b"], ["c"], ["d"]]` |
+| vertex b separates the chain | `[["a"], ["c"], ["d"]]` |
+| unreachable endpoint returns explicit missing route | `null` |
+| zero-length self route | `0.0` |
+
+The comparisons above encode independently specified small examples and contract expectations; a passing answer key is not evidence of complete domain correctness. The original functions and their existing test suites remain the authority for broader supported contracts.
+
+## Learner tasks and assessment rubric
+
+1. Before running the lab, predict every expected answer and derive one numeric result or state transition by hand.
+2. Explain the worked reasoning above using the referenced source, including the rejected or counterexample case.
+3. Add a new valid example and a nearby failing example. Explain which assumption changes, then compare against the existing implementation. For concept/static labs, keep the result explicitly at that level.
+4. Complete the scorecard for a proposed extension and a simpler baseline. Leave measurements unknown until collected; a task that the baseline already solves is not evidence for additional topology.
+
+| Competency | Points | Full-credit evidence |
 | --- | --- | --- |
-| [10](../../spatial_topology/analysis.py#L10) | `def canonical(value):` | State the input/output contract and trace one normal and one failing case. |
-| [11](../../spatial_topology/analysis.py#L11) | `return (json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False) + '\n').encode()` | Predict the returned value and distinguish a computed result from authorization. |
-| [14](../../spatial_topology/analysis.py#L14) | `def fingerprint(value):` | State the input/output contract and trace one normal and one failing case. |
-| [15](../../spatial_topology/analysis.py#L15) | `return hashlib.sha256(canonical(value)).hexdigest()` | Explain the exact bytes bound by the digest and why hashing does not authenticate the source. |
-| [18](../../spatial_topology/analysis.py#L18) | `def adjacency(network, requirements):` | State the input/output contract and trace one normal and one failing case. |
-| [25](../../spatial_topology/analysis.py#L25) | `return graph` | Predict the returned value and distinguish a computed result from authorization. |
-| [28](../../spatial_topology/analysis.py#L28) | `def components(graph, skip_node=None, skip_edge=None):` | State the input/output contract and trace one normal and one failing case. |
-| [43](../../spatial_topology/analysis.py#L43) | `return groups` | Predict the returned value and distinguish a computed result from authorization. |
-| [46](../../spatial_topology/analysis.py#L46) | `def shortest_path(graph, source, target):` | State the input/output contract and trace one normal and one failing case. |
-| [48](../../spatial_topology/analysis.py#L48) | `return None` | Predict the returned value and distinguish a computed result from authorization. |
-| [62](../../spatial_topology/analysis.py#L62) | `return {'nodes': list(reversed(nodes)), 'edges': list(reversed(edges)),` | Draw the represented relation; identify direction, multiplicity and edge labels. |
-| [70](../../spatial_topology/analysis.py#L70) | `return None` | Predict the returned value and distinguish a computed result from authorization. |
-| [73](../../spatial_topology/analysis.py#L73) | `def build_report(geojson, requirements):` | State the input/output contract and trace one normal and one failing case. |
-| [74](../../spatial_topology/analysis.py#L74) | `if type(requirements) is dict and requirements.get('schema_version') == 2:` | Separate type, shape and value checks; test a missing field and an invalid value. |
-| [76](../../spatial_topology/analysis.py#L76) | `return build_report_v2(geojson, requirements)` | Predict the returned value and distinguish a computed result from authorization. |
-| [116](../../spatial_topology/analysis.py#L116) | `return {'schema_version': 1, 'engine_version': ENGINE_VERSION,` | Separate type, shape and value checks; test a missing field and an invalid value. |
-## Assessment and verification
+| Model and contract | 0–3 | Correct objects, relation direction, labels/units, input bounds and missingness. |
+| Derivation and trace | 0–3 | Hand derivation agrees with the specified fixture; source steps explain why. |
+| Counterexample | 0–3 | New failing/boundary case has a justified expected result; rejection is not suppressed. |
+| Scope and necessity | 0–3 | Distinguishes software behavior from validation and compares an explicit simpler alternative. |
 
-A learner must explain the model, trace the capstone, identify a counterexample and state the scope boundary. Assess these four competencies equally; a numerical score cannot compensate for an unsupported scientific or operational claim.
+Completion requires at least 10/12 and no zero in scope/necessity. A runnable answer key alone is not evidence that a learner achieved this competency. No learner-outcome study has been performed.
 
-Relevant existing checks:
+## Verification evidence and maintenance
 
-- [tests/test_engine2.py](../../tests/test_engine2.py)
-- [tests/test_postgis.py](../../tests/test_postgis.py)
-- [tests/test_researchos.py](../../tests/test_researchos.py)
+[VALIDATION.json](../../curriculum/VALIDATION.json) records the inspected base revision, local Python version, source/fixture hashes, lab/answer hashes, case count and exit codes. All cases were executed locally. An in-memory copy with a deliberately wrong comparison was also executed and returned nonzero, checking that the grading failure path is active. Those injected failures are harness checks, not scientific adversarial evaluations.
 
-Follow [README](../../README.md) for environment and installed-package instructions. Read scripts before execution; source-reading exercises do not authorize provider calls, model downloads, live orders, hardware actions or messages. Synthetic fixtures establish software behavior only. This documentation change does not report those exercises as already executed.
+The dedicated [curriculum workflow](../../.github/workflows/curriculum.yml) runs the same `--verify` command on relevant pull-request changes. CI status is reported by GitHub; the local record does not assert that remote CI passed. Existing full-suite and installed-package requirements still apply to runtime changes. When source or fixture semantics change, inspect the diff and rederive answers before updating expected.json. Never regenerate expected answers solely to silence a failure. Refresh the local validation record after an actual run; do not rewrite its recorded base revision as if a new run occurred.
 
 ## Interoperability and adoption gate
 

@@ -1,0 +1,126 @@
+{
+  "case_count": 6,
+  "cases": [
+    {
+      "actual": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "case": "isolated vertex remains visible",
+      "expected": [
+        [
+          "a",
+          "b",
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "actual": {
+        "distance_m": 5.0,
+        "edges": [
+          "ab",
+          "bc"
+        ],
+        "nodes": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "case": "weighted route a-to-c",
+      "expected": {
+        "distance_m": 5.0,
+        "edges": [
+          "ab",
+          "bc"
+        ],
+        "nodes": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "actual": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "case": "edge bc is a separating bridge",
+      "expected": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "actual": [
+        [
+          "a"
+        ],
+        [
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "case": "vertex b separates the chain",
+      "expected": [
+        [
+          "a"
+        ],
+        [
+          "c"
+        ],
+        [
+          "d"
+        ]
+      ],
+      "passed": true
+    },
+    {
+      "actual": null,
+      "case": "unreachable endpoint returns explicit missing route",
+      "expected": null,
+      "passed": true
+    },
+    {
+      "actual": 0.0,
+      "case": "zero-length self route",
+      "expected": 0.0,
+      "passed": true
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Synthetic curriculum checks only",
+  "status": "PASS"
+}
