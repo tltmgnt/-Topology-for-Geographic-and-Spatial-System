@@ -1,5 +1,14 @@
 # Geographic and Spatial Topology
 
+<!-- research-workbench:start -->
+## Research workbench
+
+[Open this repository's private workbench](https://tltmgnt-topology-for-geographic-and-spatial-system.troturn31.chatgpt.site) · [All repository workbenches](https://tltmgnt-research-workbenches.troturn31.chatgpt.site)
+
+The hosted interface requires ChatGPT sign-in and access to the private Site. It supports browser-local research records, evidence fingerprints and workspace export. It is a prototype: no live AI model or repository backend is connected, and it does not establish external validation.
+<!-- research-workbench:end -->
+
+
 ## Topology Engine 2.0 upgrade
 
 The project now includes opt-in directed and weighted routing, polygon relationships,
