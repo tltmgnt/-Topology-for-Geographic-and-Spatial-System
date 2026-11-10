@@ -1,0 +1,33 @@
+{
+  "case_count": 6,
+  "command": "python curriculum/lab.py --verify",
+  "exit_code": 0,
+  "expected_sha256": "08fac6368a1d76ea1e97304c250866dfdea96b9530253949ccad6ffe90eac631",
+  "lab_sha256": "91b3ab9275a02acd2ab991e858ca2afbba19d5c7152271b16befd14b10029f22",
+  "python": "3.12.14",
+  "repository": "tltmgnt/-Topology-for-Geographic-and-Spatial-System",
+  "schema_version": 1,
+  "scope": "Local synthetic curriculum validation on the recorded source snapshot; not complete repository CI, learning outcomes, independent scientific reproduction or deployment approval",
+  "source_and_fixture_sha256": {
+    "examples/gaps.json": "fe6a13a4f033bb347937086b588037fce1c3c0de8b1c92116119fb2efb92111f",
+    "examples/network-v2.geojson": "fc9adc503794692d059485e95f0f5f493bb5df304662b797a9c34bcc83b05dd5",
+    "examples/network.geojson": "188ea3ea10384b4d0873e873c7228b254361d2c53edfd2e0d19e49be5a565064",
+    "examples/outage.json": "20a425140d2119bddc5831ab6422ebfc576c2b262fd9de58beed200e37756aaa",
+    "examples/requirements-v2.json": "e2add568394e5499c66048e742be77c65316e68bc3c2ee1819f0a44417c8ce8d",
+    "examples/requirements.json": "fbd6717e4719d0f6bd29a57274b0bfd75d17a3d81d147562c5b82bc0104adab7",
+    "spatial_topology/__init__.py": "aaabbfcf41362f0fc364206338323dc3938a362c5ef1a9cfa790afc69bbb52c1",
+    "spatial_topology/__main__.py": "bf93e1890c9053602d636d913d79f6a49cc65a92394e59d2566a71ac15779767",
+    "spatial_topology/analysis.py": "35cabe9330626ae7a3accb313e34f85c3a367702e23bef7d2c3471215e809e02",
+    "spatial_topology/engine2.py": "02e2570bdee53eac6a6cb233a7992cf2dc5bea12ec3482a6f8b0de1552f8f7c0",
+    "spatial_topology/geopackage.py": "2ac29c38780d13a71f2685e85cea14c5d5fbd6665fb9b301d58d1a4c7997e9e3",
+    "spatial_topology/io.py": "ed214cd702d2f6e32991c4d644bfca7bd041391b28f8fd9621a6425f03457a0f",
+    "spatial_topology/model.py": "f256b3d98d80426ef1d5c9be89bc92172e5197c1074442b43c0cd172475736d7",
+    "spatial_topology/polygons.py": "7b46de516b36f924eb8dccc109b7d6cb86d19a0f0e36a218e784ac91e4e6f61b",
+    "spatial_topology/postgis.py": "38dd0545d618c8303bb296ff33f2f8ab8cc5a03203db34357404678b8363692d",
+    "spatial_topology/render.py": "a17422b3ccf78760e2795710252b7f804eaec9d06136cee78626ee1863fffca1",
+    "spatial_topology/render2.py": "fdd8341ce95ef1b69f7f20859e7b5d6a35b3d6f2d45569223748f69b6ad11663",
+    "spatial_topology/verification.py": "9313a9e8dbcc7179cc611f625de299a3ac3bfa10d59e0aa545dac65abba63314"
+  },
+  "source_base_commit": "113013012f1de5ef8d2f88196bc95e7edd5a2662",
+  "wrong_expectation_exit_code": 1
+}
