@@ -1,0 +1,5 @@
+# MathOS × — -Topology-for-Geographic-and-Spatial-System
+
+This optional offline research adapter mirrors [MathOS × PR #39](https://github.com/tltmgnt/MathOS/pull/39). It generates 56 **generic mathematical** research questions across seven frontiers, four directions, two depths; supplies finite exact causal-abstraction and GF(2) obstruction checks; and adapts human-reviewed research priorities by a transparent heuristic. All results remain **NOT_CERTIFIED** and **not independently verified as novel**. It does not operate this repo's services or claim scientific/physical effectiveness.
+
+Run `python -m unittest discover -s tests -p 'test_mathosx_discovery.py' -v` then `python -m mathosx.discovery --limit 16`. To supply explicit feedback: `python -m mathosx.discovery --rate-question causal-abstraction:invent:research --outcome useful --evidence-ref review/example-1 --reviewer reviewer-id`, followed by ordinary Git review of `mathosx/feedback.v1.json`. Feedback changes question ranking, not mathematical truth. CI runs only on PR/manual dispatch with read-only permissions, no secrets, paid models, autonomous edits, or merges.
