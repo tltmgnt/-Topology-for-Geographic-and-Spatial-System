@@ -1,0 +1,35 @@
+name: MathOS X discovery feedback and bounded probes
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'mathosx/discovery.py'
+      - 'tests/test_mathosx_discovery.py'
+      - 'mathosx/feedback.v1.json'
+      - '.github/workflows/mathosx-discovery.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 12 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify discovery engine offline
+        run: python -m unittest discover -s tests -p 'test_discovery.py' -v
+      - name: Generate bounded research queue and evidence
+        run: python -m mathosx.discovery --limit 16 --output-dir artifacts/discovery > /dev/null
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mathos-discovery-evidence
+          path: artifacts/discovery/discovery_report.json
+          retention-days: 30
