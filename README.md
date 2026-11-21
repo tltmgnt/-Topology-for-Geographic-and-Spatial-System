@@ -208,3 +208,7 @@ See [current implementation and shared-core integration](docs/portfolio/INTEGRAT
 ## Topology compatibility and curriculum
 
 See the [repository-specific v2 curriculum](docs/portfolio/TOPOLOGY_CURRICULUM_V2.md) for topology choices, worked explanations, a graded laboratory and adoption boundaries. Run the offline answer key from this repository root:\n\n```sh\npython curriculum/lab.py --verify\n```\n\n[Expected answers](curriculum/expected.json) · [Recorded local validation](curriculum/VALIDATION.json). The guide states any existing dependency needed for the lab.
+
+## Terrain and market connectivity lab
+
+Start with the terrain lesson. Compare the 140 m saddle and the 150 m detour after masking it. Record which cells share edges before interpreting a disconnected result in a spatial review. [Standalone course and exercises](curriculum/terrain_market_resilience/README.md)
