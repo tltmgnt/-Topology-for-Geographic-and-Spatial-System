@@ -1,0 +1,1 @@
+The standalone course is reproduced from [Grok-HedgeOps-DTI at c2e3107](https://github.com/tltmgnt/Grok-HedgeOps-DTI/tree/c2e3107ea55f728a58b7548c02d7e82aeb4a4bb2/curriculum/terrain_market_resilience) under the included Apache License 2.0.

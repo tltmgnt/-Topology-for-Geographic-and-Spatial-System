@@ -16,6 +16,11 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Verify standalone terrain and market curriculum
+        working-directory: curriculum/terrain_market_resilience
+        run: |
+          python -m unittest discover -v
+          python grid_lab.py both
       - name: Install package
         run: python -m pip install .
       - name: Unit and end to end tests
